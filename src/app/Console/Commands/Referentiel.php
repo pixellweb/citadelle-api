@@ -18,7 +18,7 @@ class Referentiel extends Command
      *
      * @var string
      */
-    protected $signature = 'citadelle:import:referentiel {--O|option=all}';
+    protected $signature = 'import:referentiel {--O|option=all}';
 
     /**
      * The console command description.
