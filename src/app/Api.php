@@ -23,7 +23,7 @@ class Api
     /**
      * @var string
      */
-    public $api_token;
+    protected $token;
 
 
     /**
@@ -32,7 +32,7 @@ class Api
     public function __construct()
     {
         $this->url = config('citadelle.referentiel.api.url');
-        $this->api_token = config('citadelle.referentiel.api.token');
+        $this->token = config('citadelle.referentiel.api.token');
     }
 
 
@@ -50,7 +50,7 @@ class Api
         );
 
         $headers = [
-            'query' => ['api_token' => $this->api_token],
+            'query' => ['api_token' => $this->token],
             'headers' => [
                 'Accept' => 'application/json'
             ]
@@ -87,7 +87,7 @@ class Api
     {
         $client = new Client(['base_uri' => $this->url]);
         $headers = [
-            'query' => ['api_token' => $this->api_token],
+            'query' => ['token' => $this->token],
             'headers' => [
                 'Accept' => 'application/json'
             ],

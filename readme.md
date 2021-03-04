@@ -5,5 +5,5 @@
 composer require pixellweb/citadelle-api
 
 # Run import
-php artisan citadelle:import:referentiel
+php artisan import:referentiel
 ```
