@@ -43,7 +43,6 @@ class Api
      */
     public function get(string $ressource_path): array
     {
-        $url = $this->url . $ressource_path;
         $client = new Client([
                 'base_uri' => $this->url
             ]
@@ -57,10 +56,10 @@ class Api
         ];
 
         try {
-            $response = $client->get($url, $headers);
+            $response = $client->get($ressource_path, $headers);
 
             if ($response->getStatusCode() != 200 or empty($response->getBody()->getContents())) {
-                throw new ReferentielApiException("Api::get : code http error (" . $response->getStatusCode() . ") ou body vide : " . $url);
+                throw new ReferentielApiException("Api::get : code http error (" . $response->getStatusCode() . ") ou body vide : " . $ressource_path);
             }
 
         } catch (RequestException $exception) {
@@ -87,7 +86,7 @@ class Api
     {
         $client = new Client(['base_uri' => $this->url]);
         $headers = [
-            'query' => ['token' => $this->token],
+            'query' => ['api_token' => $this->token],
             'headers' => [
                 'Accept' => 'application/json'
             ],
