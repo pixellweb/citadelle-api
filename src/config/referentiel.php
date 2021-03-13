@@ -15,6 +15,7 @@ return [
             /*'couleur' => \App\Models\Vehicule\Referentiel\Couleur::class,*/
             'marque' => \App\Models\Vehicule\Referentiel\Marque::class,
             'modele' => \App\Models\Vehicule\Referentiel\Modele::class,
+            'caracteristique' => \App\Models\Vehicule\Referentiel\Caracteristique::class,
         ],
     ]
 
