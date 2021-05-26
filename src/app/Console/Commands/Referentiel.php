@@ -138,7 +138,7 @@ class Referentiel extends Command
 
         $progress_bar = $this->startProgressBar($sources->count() * (count(config('citadelle.referentiel.referentiel.types'))));
 
-        CorrespondanceMOdel::truncate();
+        CorrespondanceModel::truncate();
 
         foreach ($sources as $source) {
 
@@ -149,7 +149,7 @@ class Referentiel extends Command
                 try {
 
                     $correspondance = new Correspondance();
-                    $datas = $correspondance->get($source->id, $type);
+                    $datas = $correspondance->get($source->api_source_id, $type);
 
                     $datas = array_map(function ($data) use ($source) {
                         unset($data['intitule']);
