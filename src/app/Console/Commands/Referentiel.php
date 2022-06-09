@@ -138,7 +138,7 @@ class Referentiel extends Command
 
         $progress_bar = $this->startProgressBar($sources->count() * (count(config('citadelle.referentiel.referentiel.types'))));
 
-        CorrespondanceModel::truncate();
+        $is_truncate = false;
 
         foreach ($sources as $source) {
 
@@ -156,6 +156,13 @@ class Referentiel extends Command
                         $data['source_id'] = $source->id;
                         return $data;
                     }, $datas);
+
+
+                    if (!$is_truncate) {
+                        // Permet de ne pas vider la table en cas de problème de connexion à l'api
+                        CorrespondanceModel::truncate();
+                        $is_truncate = true;
+                    }
 
                     CorrespondanceModel::insert($datas);
 
