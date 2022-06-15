@@ -153,7 +153,7 @@ class Referentiel extends Command
 
                     $datas = array_map(function ($data) use ($source) {
                         unset($data['intitule']);
-                        $data['source_id'] = $source->id;
+                        $data['source_id'] = $source->api_source_id;
                         return $data;
                     }, $datas);
 
